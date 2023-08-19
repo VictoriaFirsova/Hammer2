@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-+dtjrn010=e750#j-khu-0#*vt)+zl-dihyy6&e2_w$@s=airf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com',
+                 'www.VictoriaF.pythonanywhere.com', 'VictoriaF.pythonanywhere.com']
 
 # Use the Django cache system for session storage
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
@@ -44,9 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
     'rest_framework',
     'rest_framework.authtoken',
+    'main',
+
 ]
 
 MIDDLEWARE = [

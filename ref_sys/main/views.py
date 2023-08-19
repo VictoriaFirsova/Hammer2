@@ -136,7 +136,7 @@ class UserProfileList(generics.ListCreateAPIView):
     serializer_class = UserProfileSerializer
 
     def get_queryset(self):
-        # Вернуть нужную выборку данных, например:
+
         return UserProfile.objects.filter(phone=self.request.user.phone)
 
 
