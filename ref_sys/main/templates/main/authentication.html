@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Referral System</title>
+</head>
+<body>
+    <h1>Referral System</h1>
+    <form method="post">
+    {% csrf_token %}
+
+        <p>На ваш номер {{ phone }} отправлено SMS с кодом: {{ code }}</p>
+
+    <input type="text" name="code_input" placeholder="Введите код из четырех цифр">
+    <button type="submit">Подтвердить</button>
+    </form>
+</body>
+</html>

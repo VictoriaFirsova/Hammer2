@@ -1,0 +1,34 @@
+<head>
+<meta charset="UTF-8">
+<title>Referral System</title>
+</head>
+<body>
+
+
+{% block content %}
+    <h1>User Profile</h1>
+    <p>Номер телефона: {{ user_profile.phone }}</p>
+
+
+        <p>Ваш инвайт-код: {{ user_profile.invite_code }}</p>
+
+        <form method="post" id="invite-form">
+    {% csrf_token %}
+    <input type="hidden" name="user_phone" value="{{ user_profile.phone }}">
+    <input type="hidden" name="user_invite_code" value="{{ user_profile.invite_code }}">
+    <input type="text" id="entered-code" name="entered_code" placeholder="Введите инвайт-код">
+    <button type="submit" id="submit-code">Отправить</button>
+</form>
+
+<div id="error-message" style="color: red;">{{ error_message }}</div>
+
+    <h2>Пользователи, использовавшие Ваш код</h2>
+    <ul>
+    {% for used_invitation in used_invitations %}
+        <li>{{ used_invitation.phone }} </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
+</body>
