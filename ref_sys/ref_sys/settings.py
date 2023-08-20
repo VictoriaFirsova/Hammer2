@@ -102,8 +102,12 @@ PASSWORDLESS_AUTH = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ref_sys',
+        'USER': 'victoria',
+        'PASSWORD': '39043904',
+        'HOST': 'localhost',  # or your database host
+        'PORT': '5432',  # your database port if not default
     }
 }
 
