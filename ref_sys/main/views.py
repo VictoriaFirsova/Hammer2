@@ -1,3 +1,5 @@
+import time
+
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -153,7 +155,8 @@ class UserProfileDetail(generics.RetrieveAPIView):
 class UserProfileCreate(APIView):
     permission_classes = [AllowAny]  # Разрешить доступ для всех
 
-    def post(self, request, phone):
+    def post(self, request, phone):  # Получение номера телефона из запроса
+
         try:
             user_profile = UserProfile.objects.get(phone=phone)
             auth_code = ''.join(random.choices(string.digits, k=4))
@@ -163,13 +166,14 @@ class UserProfileCreate(APIView):
                 auth_code_entry.save()
             except AuthorizationCode.DoesNotExist:
                 AuthorizationCode.objects.create(phone=phone, code=auth_code)
+            time.sleep(2)
             return Response({'message': f'Пользователь уже существует. Код авторизации обновлен: {auth_code}'})
         except UserProfile.DoesNotExist:
             # Создаем профиль пользователя и генерируем код авторизации
             user_profile = UserProfile.objects.create(phone=phone)
             auth_code = ''.join(random.choices(string.digits, k=4))
             AuthorizationCode.objects.create(phone=phone, code=auth_code)
-
+            time.sleep(2)
             return Response({'message': f'Пользователь создан. Код авторизации {auth_code}.'})
 
 

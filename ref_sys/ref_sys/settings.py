@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+dtjrn010=e750#j-khu-0#*vt)+zl-dihyy6&e2_w$@s=airf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com',
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.pythonanywhere.com',
                  'www.VictoriaF.pythonanywhere.com', 'VictoriaF.pythonanywhere.com']
 
 # Use the Django cache system for session storage
@@ -87,9 +87,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES':
-         ('rest_framework.authentication.TokenAuthentication',
-    )
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+
+    ],
 }
 
 PASSWORDLESS_AUTH = {
